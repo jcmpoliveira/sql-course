@@ -7,3 +7,26 @@
 -- these lines here.
 
 
+create table players (
+
+	id serial primary key,
+	name text not null
+
+);
+
+create table matches(
+
+	id_match serial primary key,
+	id_player1 integer references players(id),
+	id_player2 integer references players(id),
+	winner integer references players(id)
+
+);
+
+
+create table standings (
+
+	id_player integer references players(id),
+	n_wins integer,
+	n_loss integer
+);
